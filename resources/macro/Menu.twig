@@ -1,0 +1,23 @@
+{% macro render(menu) %}
+<ul class="sidebar-menu tree" data-widget="tree">
+    <li class="header">MAIN NAVIGATION</li>
+
+    {% for item in menu %}
+    <li class="treeview{{ item.isActive() ? ' active' : '' }}">
+        <a href="{{ item.getUri() }}">
+            <i class="{{ item.getIcon() }}"></i> <span>{{ item.getName() }}</span>
+            <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+        </a>
+        {% if item.hasSubmenu() %}
+        <ul class="treeview-menu">
+            {% for subitem in item.getSubmenu %}
+            <li class="{{ subitem.isActive() ? ' active' : '' }}">
+                <a href="{{ subitem.getUri() }}"><i class="fa fa-circle-o"></i> {{ subitem.getName() }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endmacro %}

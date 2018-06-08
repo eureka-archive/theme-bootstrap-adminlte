@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="{{ meta.charset }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ meta.title }}</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/static/cache/eureka/theme-bootstrap-adminlte/bootstrap/css/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" href="/static/cache/eureka/theme-bootstrap-adminlte/fontawesome/css/font-awesome.min.css" media="screen">
+    <link rel="stylesheet" href="/static/cache/eureka/theme-bootstrap-adminlte/ionicons/css/ionicons.min.css" media="screen">
+    <link rel="stylesheet" href="/static/cache/eureka/theme-bootstrap-adminlte/icheck/css/square/square.css" media="screen">
+    <link rel="stylesheet" href="/static/cache/eureka/theme-bootstrap-adminlte/main/css/AdminLTE.min.css" media="screen">
+    <link rel="stylesheet" href="/static/cache/eureka/theme-bootstrap-adminlte/main/css/skin/skin-black.min.css" media="screen">
+    <link rel="stylesheet" href="/static/cache/eureka/theme-bootstrap-adminlte/select2/css/select2.min.css" media="screen">
+    <link rel="stylesheet" href="/static/cache/eureka/theme-bootstrap-adminlte/main/css/alternate/AdminLTE-select2.min.css" media="screen">
+    <link rel="stylesheet" href="/static/cache/eureka/theme-bootstrap-adminlte/datatable/css/dataTables.bootstrap.min.css" media="screen">
+    {% for file in cssFiles %}
+        <link rel="stylesheet" href="{{ file }}">
+    {% endfor %}
+
+</head>
+<body class="hold-transition skin-black sidebar-mini {% if menu_state == 'closed' %}sidebar-collapse{% endif %}">
+
+<div class="wrapper">
+
+    {% block page %}{% endblock %}
+
+</div>
+
+<script src="/static/cache/eureka/theme-bootstrap-adminlte/jquery/js/jquery.min.js"></script>
+<script src="/static/cache/eureka/theme-bootstrap-adminlte/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/cache/eureka/theme-bootstrap-adminlte/icheck/js/icheck.min.js"></script>
+<script src="/static/cache/eureka/theme-bootstrap-adminlte/select2/js/select2.full.min.js"></script>
+<script src="/static/cache/eureka/theme-bootstrap-adminlte/datatable/js/jquery.dataTables.min.js"></script>
+<script src="/static/cache/eureka/theme-bootstrap-adminlte/datatable/js/dataTables.bootstrap.min.js"></script>
+<script src="/static/cache/eureka/theme-bootstrap-adminlte/main/js/adminlte.min.js"></script>
+<script src="/static/cache/eureka/theme-bootstrap-adminlte/main/js/main.js"></script>
+
+{% for file in jsFiles %}
+    <script src="{{ file }}"></script>
+{% endfor %}
+{% block footer_script %}{% endblock %}
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    $('[data-toggle="push-menu"]').on('click', function() {
+        setCookie('{{ meta.cookie.menu_state_name }}', $('body').hasClass('sidebar-collapse') ? 'opened' : 'closed', 30);
+    });
+
+    $('.select2').select2();
+});
+</script>
+
+</body>
+</html>

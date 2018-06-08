@@ -1,0 +1,7 @@
+{% block breadcrumb %}
+<ol class="breadcrumb">
+    {% for item in breadcrumb %}
+    <li class="active">{%  if item.getIcon() is not null  %}<i class="{{ item.getIcon() }}"></i>{% endif %} {{ item.getName() }}</li>
+    {% endfor %}
+</ol>
+{% endblock %}

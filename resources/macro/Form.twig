@@ -1,0 +1,55 @@
+{% macro input(id, name, label, value, error, type, placeholder, disabled, readonly) %}
+<div class="form-group{% if error %} has-error{% endif %}">
+    <label for="{{ id }}">{{ label }}</label>
+    <input class="form-control" id="{{ id }}" placeholder="{{ placeholder|default(label) }}" type="{{ type|default('text') }}" name="{{ name }}" value="{{ value }}"{% if disabled|default(false) %} disabled{% endif %}{% if readonly|default(false) %} readonly{% endif %}>
+    <span class="help-block">{{ error|default('&nbsp;')|raw }}</span>
+</div>
+{% endmacro %}
+
+{% macro select(id, name, label, selectOptions, value, error) %}
+<div class="form-group{% if error %} has-error{% endif %}">
+    <label for="{{ id }}">{{ label }}</label>
+    <select class="form-control" id="{{ id }}" name="{{ name }}">
+        {% for optionValue, optionLabel in selectOptions %}
+        <option value="{{ optionValue }}"{% if value == optionValue %} selected{% endif %}>{{ optionLabel }}</option>
+        {% endfor %}
+    </select>
+    <span class="help-block">{{ error|default('&nbsp;')|raw }}</span>
+</div>
+{% endmacro %}
+
+{% macro selectWithGroups(id, name, label, selectGroupOptions, value, error) %}
+    <div class="form-group{% if error %} has-error{% endif %}">
+        <label for="{{ id }}">{{ label }}</label>
+        <select class="form-control" id="{{ id }}" name="{{ name }}">
+            {% for groupLabel, groupOptions in selectGroupOptions %}
+            <optgroup label="{{ groupLabel }}">
+                {% for optionValue, optionLabel in groupOptions %}
+                <option value="{{ optionValue }}"{% if value == optionValue %} selected{% endif %}>{{ optionLabel }}</option>
+                {% endfor %}
+            </optgroup>
+            {% endfor %}
+        </select>
+        <span class="help-block">{{ error|default('&nbsp;')|raw }}</span>
+    </div>
+{% endmacro %}
+
+{% macro textarea(id, name, label, value, error, placeholder, rows) %}
+    <div class="form-group{% if error %} has-error{% endif %}">
+        <label for="{{ id }}">{{ label }}</label>
+        <textarea rows="{{ rows|default('3') }}" class="form-control" id="{{ id }}" name="{{ name }}" placeholder="{{ placeholder|default(label) }}">{{ value }}</textarea>
+        <span class="help-block">{{ error|default('&nbsp;')|raw }}</span>
+    </div>
+{% endmacro %}
+
+{% macro checkbox(id, name, label, value, error) %}
+    <div class="form-group{% if error %} has-error{% endif %}">
+        <div class="checkbox">
+            <label class="checkbox" for="{{ id }}">
+                <input type="checkbox" id="{{ id }}" name="{{ name }}" value="1"{% if value == 1 %} checked{% endif %}>
+                {{ label }}
+            </label>
+        </div>
+        <span class="help-block">{{ error|default('&nbsp;')|raw }}</span>
+    </div>
+{% endmacro %}

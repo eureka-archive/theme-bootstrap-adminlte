@@ -1,0 +1,30 @@
+{% extends '@layout/Index.twig' %}
+
+{% block page %}
+    {% block header %}{% endblock %}
+
+    {% block left %}{% endblock %}
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                {% block content_title %}{% endblock %}
+                <small>{% block content_subtitle %}{% endblock %}</small>
+            </h1>
+
+            {% block breadcrumb %}{% endblock %}
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            {% block content %}{% endblock %}
+
+        </section>
+    </div>
+
+    {% block footer %}{% endblock %}
+
+    {% block right %}{% endblock %}
+{% endblock %}

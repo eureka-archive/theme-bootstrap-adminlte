@@ -1,0 +1,11 @@
+{% macro box(icon, background, title, stat) %}
+    <div class="info-box">
+        <span class="info-box-icon {{ background }}"><i class="{{ icon }}"></i></span>
+
+        <div class="info-box-content">
+            <span class="info-box-text">{{ title }}</span>
+            <span class="info-box-number">{{ stat }}</span>
+        </div>
+        <!-- /.info-box-content -->
+    </div>
+{% endmacro %}

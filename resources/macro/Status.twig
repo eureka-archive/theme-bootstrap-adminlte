@@ -1,0 +1,8 @@
+
+{% macro enabledDisabled(isEnabled, label) %}
+    {% if isEnabled %}
+        <span class="label label-success">{{ label|default('enabled') }}</span>
+    {% else %}
+        <span class="label label-danger">{{ label|default('disabled') }}</span>
+    {% endif %}
+{% endmacro %}

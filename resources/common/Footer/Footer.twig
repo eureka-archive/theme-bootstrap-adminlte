@@ -1,0 +1,13 @@
+{% block footer %}
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> {% block footer_version %}1.0.0{% endblock %}
+    </div>
+
+    <strong>
+        {% block footer_copyright %}
+        Copyright &copy; 2010-2017 Romain Cottard. All rights reserved.
+        {% endblock %}
+    </strong>
+</footer>
+{% endblock %}

@@ -1,0 +1,20 @@
+
+<div class="modal fade" id="{% block modal_default_id %}modal-default{% endblock %}">
+    <div class="modal-dialog {% block modal_default_size %}{% endblock %}">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{% block modal_default_title %}Default Modal{% endblock %}</h4>
+            </div>
+            <div class="modal-body">
+                {% block modal_default_body %}<p>One fine body&hellip;</p>{% endblock %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-flat btn-default pull-left" data-dismiss="modal">Close</button>
+                {% block modal_default_buttons %}
+                <button type="button" class="btn btn-flat btn-primary" onclick="">Save changes</button>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
